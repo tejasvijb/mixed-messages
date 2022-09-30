@@ -97,4 +97,33 @@ const data = {
   ]
 };
 
+const cardArr = Object.keys(cards)
+
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+let card;
+readline.question("Type card to select a random card: ", (input) => {
+  
+    if (input.toLowerCase() === "card") {
+        const random = Math.floor(Math.random() * cardArr.length);
+        card = cardArr[random];
+        console.log()
+        console.log('Your card is: ')
+        console.log(cards[card]);
+        console.log()
+        console.log('Your random Matching Card is: ')
+        const random2 = Math.floor(Math.random() * data[card].length);
+        let matchingCard = data[card][random2];
+        console.log(matchingCard)
+    }else {
+        console.log('Please choose a valid card.');
+    }
+
+  readline.close();
+});
+
+
+
 
